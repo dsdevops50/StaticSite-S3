@@ -9,9 +9,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
+          - name: Checkout repository
+            uses: actions/checkout@v2
 
-    - name: Build copy to Hosted Location
-      shell: pwsh
-      run: | 
-        Copy-Item -Path ".\*" -Destination "C:\inetpub\dsdevops" -Recurse
+          - name: Run PowerShell command
+              run:|
+              Copy-Item -Path ".\*" -Destination "C:\inetpub\dsdevops" -Recurse
