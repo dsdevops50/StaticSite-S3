@@ -12,6 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Copy files
+        shell: cmd
         run: |
           # Copy folders and files using the xcopy command
           xcopy ".\src\" "C:\inetpub\dsdevops" /E /I
