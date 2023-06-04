@@ -7,11 +7,14 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-
     steps:
-          - name: Checkout repository
-            uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-          - name: Run PowerShell command
-              run:|
-              Copy-Item -Path ".\*" -Destination "C:\inetpub\dsdevops" -Recurse
+      - name: Run PowerShell command
+        run: |
+          # Your PowerShell commands go here
+          Copy-Item -Path ".\*" -Destination "C:\inetpub\dsdevops" -Recurse
+
+      # Add more steps as needed
+
