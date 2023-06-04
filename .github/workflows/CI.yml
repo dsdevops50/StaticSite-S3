@@ -15,6 +15,7 @@ jobs:
         shell: powershell
         run: |
           # Your PowerShell commands go here
+          -ExecutionPolicy Bypass -command ". '{0}'"
           $currentPath = Get-Location -PSProvider FileSystem | Select-Object -ExpandProperty Path
           Write-Host "Current Path: $currentPath
 
