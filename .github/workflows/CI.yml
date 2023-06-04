@@ -13,4 +13,5 @@ jobs:
 
     - name: Build copy to Hosted Location
       shell: pwsh
-      run: Copy-Item -Path ".\*" -Destination "C:\inetpub\dsdevops" -Recurse
+      run: | 
+        Copy-Item -Path ".\*" -Destination "C:\inetpub\dsdevops" -Recurse
