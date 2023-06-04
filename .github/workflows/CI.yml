@@ -14,7 +14,8 @@ jobs:
       - name: Run PowerShell command
         run: |
           # Your PowerShell commands go here
-          Copy-Item -Path ".\*" -Destination "C:\inetpub\dsdevops" -Recurse
+          $PWD.Path
+          Copy-Item -Path ".\src*" -Destination "C:\inetpub\dsdevops" -Recurse
 
       # Add more steps as needed
 
