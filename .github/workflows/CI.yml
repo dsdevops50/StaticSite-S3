@@ -12,10 +12,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run PowerShell command
-        run: |
-          # Your PowerShell commands go here
-          $PWD.Path
-          Copy-Item -Path ".\src*" -Destination "C:\inetpub\dsdevops" -Recurse
+        run: $PWD.Path
+
 
       # Add more steps as needed
 
