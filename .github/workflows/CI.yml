@@ -11,11 +11,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Run PowerShell command
-        shell: powershell
+      - name: Copy files
         run: |
-          # Your PowerShell commands go here
-          -ExecutionPolicy Bypass -command ". '{0}'"
-          $currentPath = Get-Location -PSProvider FileSystem | Select-Object -ExpandProperty Path
-          Write-Host "Current Path: $currentPath
+          # Copy folders and files using the xcopy command
+          xcopy ".\src\" "C:\inetpub\dsdevops" /E /I
+
 
