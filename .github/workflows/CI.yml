@@ -12,8 +12,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run PowerShell command
-        run: $PWD.Path
-
-
-      # Add more steps as needed
+        shell: powershell
+        run: |
+          # Your PowerShell commands go here
+          $currentPath = Get-Location -PSProvider FileSystem | Select-Object -ExpandProperty Path
+          Write-Host "Current Path: $currentPath
 
