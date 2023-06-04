@@ -15,7 +15,7 @@ jobs:
         shell: cmd
         run: |
           # Copy folders and files using the xcopy command
-          xcopy ".\src\" "C:\inetpub\dsdevops" /E /I
+          xcopy ".\src\" "C:\inetpub\dsdevops" /E /I /Y
 
 
 
