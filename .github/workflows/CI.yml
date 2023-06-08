@@ -7,16 +7,18 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Copy files
-        shell: cmd
-        run: |
-          # Copy folders and files using the xcopy command
-          xcopy ".\src\" "C:\inetpub\dsdevops" /E /I /Y
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
 
-
+      - name: Sync code to S3 bucket
+        run: aws s3 sync .\src s3://nsybucket/DSY
 
