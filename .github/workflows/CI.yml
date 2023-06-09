@@ -24,6 +24,7 @@ jobs:
       - name: Publish to S3
         run: |
           #aws s3 sync .\src s3://nsybucket --delete
-          s3cmd put .\src\* s3://nsybucket/ABC/
+          aws s3 sync /src/* s3://nsybucket
+          
      
 
