@@ -22,9 +22,7 @@ jobs:
 
 
       - name: Publish to S3
-        run: |
-          #aws s3 sync .\src s3://nsybucket --delete
-          aws s3 sync /src/* s3://nsybucket
+        run: aws s3 sync .\src\ s3://nsybucket --delete
           
      
 
