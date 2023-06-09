@@ -19,7 +19,19 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1  # Replace with your desired AWS region
 
+
+      - name: Set up S3cmd cli tool
+        uses: s3-actions/s3cmd@v1.5.0
+        with:
+          provider: aws # default is linode
+          region: 'eu-central-1'
+          access_key: ${{ secrets.S3_ACCESS_KEY }}
+          secret_key: ${{ secrets.S3_SECRET_KEY }}
+
+
       - name: Publish to S3
         run: |
-          aws s3 sync .\src s3://nsybucket --delete
+          #aws s3 sync .\src s3://nsybucket --delete
+          s3cmd put .\src\* s3://nsybucket/ABC/
+     
 
