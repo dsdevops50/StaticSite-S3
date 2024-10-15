@@ -1,4 +1,4 @@
-name: CI
+name: Publish to S3
 
 on:
   workflow_dispatch:
@@ -6,24 +6,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up S3cmd cli tool
-        uses: s3-actions/s3cmd@v1.6.1
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          provider: aws # default is linode
-          region: 'ap-south-1'
-          access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'ap-south-1'  # Adjust to your region
 
-
-      - name: Publish to S3
-        run: | 
-            PWD
-            aws s3 sync .\src s3://${{ secrets.AWS_S3_BUCKET }} --delete
-        
-          
-     
-
+      - name: Upload to S3
+        run: |
+          aws s3 sync ./src s3://${{ secrets.AWS_S3_BUCKET }} --delete
