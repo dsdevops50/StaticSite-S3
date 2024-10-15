@@ -1,9 +1,7 @@
 name: CI
 
 on:
-  pull_request:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -24,7 +22,7 @@ jobs:
       - name: Publish to S3
         run: | 
             PWD
-            aws s3 sync .\src s3://nsybucket --delete
+            aws s3 sync .\src s3://${{ secrets.AWS_S3_BUCKET }} --delete
         
           
      
